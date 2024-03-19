@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+    
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, rgb(255, 255, 128), rgb(255, 255, 198), rgb(196, 255, 196), rgb(132, 255, 132));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    form {
+        width: 50%;
+        background-color: rgb(213, 255, 255); /* 提供された画像から抽出した色 */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .row {
+        margin-bottom: 15px;
+    }
+
+    .col-form-label {
+        text-align: right;
+        padding-top: 10px;
+    }
+
+    .form-control {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 10px;
+        width: calc(100% - 12px); /* 枠の幅を含めたサイズに調整 */
+    }
+
+    .invalid-feedback {
+        color: #dc3545;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<form class="form py-4 needs-validation h-adr" method="post" th:action="@{/gakuseihyou/}" th:object="${gakuseihyou}">
+ 
+    <div class="row mt-3">
+        <label for="studentnumber" class="col-4 col-form-label">学生番号</label>
+        <div class="col-8">
+            <input type="text" class="form-control" id="studentnumber" name="studentnumber" th:field="*{studentnumber}"
+                th:classappend="${#fields.hasErrors('studentnumber')} ? 'is-invalid' : 'is-valid'" />
+            <div th:if="${#fields.hasErrors('studentnumber')}" th:errors="*{studentnumber}" class="invalid-feedback">
+                errors!</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <label for="name" class="col-4 col-form-label">名前</label>
+        <div class="col-8">
+            <input type="text" class="form-control" id="name" name="name" th:field="*{name}"
+                th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : 'is-valid'" />
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-feedback">
+                errors!</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <label for="age" class="col-4 col-form-label">年齢</label>
+        <div class="col-8">
+            <input type="text" class="form-control" id="age" name="age" th:field="*{age}"
+                th:classappend="${#fields.hasErrors('age')} ? 'is-invalid' : 'is-valid'" />
+            <div th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="invalid-feedback">
+                errors!</div>
+        </div>
+    </div>
+ 
+    <div class="row">
+        <label for="mail" class="col-4 col-form-label">メールアドレス</label>
+        <div class="col-8">
+            <input type="text" class="form-control" id="mail" name="mail" th:field="*{mail}"
+                th:classappend="${#fields.hasErrors('mail')} ? 'is-invalid' : 'is-valid'" />
+            <div th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" class="invalid-feedback">
+                errors!</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <label for="phone" class="col-4 col-form-label">電話</label>
+        <div class="col-8">
+            <input type="text" class="form-control" id="phone" name="phone" th:field="*{phone}"
+                th:classappend="${#fields.hasErrors('phone')} ? 'is-invalid' : 'is-valid'" />
+            <div th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="invalid-feedback">
+                errors!</div>
+        </div>
+    </div>
+ 
+    <input type="submit" class="btn btn-primary" value="登録"/>
+         
+</form>  
+ 
+</body>
+</html>
